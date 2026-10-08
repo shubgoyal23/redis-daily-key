@@ -1,0 +1,15 @@
+# secrets
+.env
+.env.*
+
+# build output
+/redis-daily
+*.exe
+*.test
+*.out
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+deploy/

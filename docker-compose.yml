@@ -1,0 +1,17 @@
+services:
+  redis-daily-key:
+    build: .
+    image: redis-daily-key:latest
+    container_name: redis-daily-key
+    restart: unless-stopped
+    env_file: .env          # REDIS_URLS, REDIS_KEY, REDIS_VAL, REDIS_TTL
+    environment:
+      TZ: ${TZ:-UTC}        # cron fires at 00:00 in this timezone
+      RUN_ON_START: "false" # set "true" to also run once when the container starts
+    mem_limit: 32m
+    cpus: 0.5
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: "3"
